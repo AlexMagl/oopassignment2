@@ -2,6 +2,7 @@ package assignment2.organizations.party;
 
 import assignment2.commons.Contactable;
 import assignment2.commons.Organization;
+import assignment2.commons.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,25 +15,27 @@ public class Party extends Organization implements Contactable {
     List<Election> elections = new ArrayList<>();
 
     public Party(String name, String mission) {
-        // TODO finish this method (0.25 points)
-
+        super.setName(name);
+        this.mission = mission;
     }
 
     public void addElection(Election e) {
-        // TODO finish this method (0.25 points)
+        elections.add(e);
     }
 
     public boolean removeElection(Election e) {
         boolean removed = false;
-        // TODO finish this method (0.25 points)
-
+        removed = elections.remove(e);
         return removed;
     }
 
     public List<Election> getFairElections() {
         List<Election> fairElections = new ArrayList<>();
-        // TODO finish this method (0.25 points)
-
+        for (Election e : elections) {
+            if (e.isFair()) {
+                fairElections.add(e);
+            }
+        }
         return fairElections;
     }
 
